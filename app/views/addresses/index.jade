@@ -18,6 +18,9 @@ block content
           td= address.twitter
           td= address.facebook
           td= address.address
+          td
+            form(method='post', action='/addresses/#{address._id}/delete')
+              button.btn.btn-danger delete
 
 block scripts
   script(src='/js/user/home.js')

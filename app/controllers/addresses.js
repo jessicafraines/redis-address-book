@@ -16,3 +16,9 @@ exports.create = function(req, res){
     res.redirect('/addresses');
   });
 };
+
+exports.destroy = function(req, res){
+  Address.destroy(req.params.id, function(){
+    res.redirect('/addresses');
+  });
+};

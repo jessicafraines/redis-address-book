@@ -1,5 +1,7 @@
 'use strict';
 
+var Mongo = require('mongodb');
+
 function Address(o, id){
   this.name     = o.name;
   this.color    = o.color;
@@ -7,6 +9,7 @@ function Address(o, id){
   this.facebook = o.facebook;
   this.address  = o.address;
   this.userId   = id;
+  this.photo    = [];
 }
 
 Object.defineProperty(Address, 'collection', {
@@ -22,5 +25,9 @@ Address.findAllByUserId = function(userId, cb){
   Address.collection.find({userId:userId}).toArray(cb);
 };
 
+Address.destroy = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  Address.collection.remove({_id:_id}, cb);
+};
 module.exports = Address;
 
