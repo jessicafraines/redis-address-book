@@ -1,0 +1,24 @@
+
+extends ../shared/template
+block content
+  h2 Address Book
+  table.table.table-bordered
+    | Add an Address
+    thead
+      th Name
+      th Color
+      th Twitter
+      th Facebook
+      th Address
+    tbody
+      each address in addresses
+        tr
+          td= address.name
+          td(style='background-color:#{address.color}')
+          td= address.twitter
+          td= address.facebook
+          td= address.address
+
+block scripts
+  script(src='/js/user/home.js')
+
